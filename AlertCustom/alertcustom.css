@@ -1,0 +1,13 @@
+@charset "UTF-8";
+
+.alert_wrap { position: fixed; top: 0; left: 50%; display: flex; align-items: center; flex-direction: column-reverse; -webkit-transform: translate3d(-50%, 0%, 0); transform: translate3d(-50%, 0%, 0); }
+.custom_alert { display: flex; justify-content: center; align-items: center; text-align: center; margin-top: -40px; padding: 10px; color: #fff; font-size: 15px; font-weight: bold; background: rgba(0, 0, 0, .35); box-shadow: 0 0 6px rgba(0, 0, 0, .3); border-radius: 5px; -webkit-transition: margin .6s ease; transition: margin .6s ease; }
+.custom_alert.on { margin-top: 20px; }
+.custom_alert.removing { -webkit-animation: removing .3s both; animation: removing .3s both; }
+
+@-webkit-keyframes removing {
+    100% { opacity: 0; -webkit-transform: translate3d(200%, 0, 0); transform: translate3d(200%, 0, 0); }
+}
+@keyframes removing {
+    100% { opacity: 0; -webkit-transform: translate3d(200%, 0, 0); transform: translate3d(200%, 0, 0); }
+}
