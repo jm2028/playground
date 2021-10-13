@@ -15,10 +15,20 @@ btnWrap.addEventListener('click', function (e) {
 
 function createCustomAlert(alertSrc) {
     var divbox = document.createElement('div');
+    var currentAlerts = document.querySelectorAll('.custom_alert:not(.removing)')
+    var removingAlerts = document.querySelectorAll('.custom_alert.removing');
 
     divbox.classList.add('custom_alert');
     divbox.innerHTML = alertSrc;
     alertWrap.appendChild(divbox);
+
+    if (2 < currentAlerts.length) {
+        customAlertDelete(currentAlerts[0], true);
+    }
+
+    if (1 <= removingAlerts.length) {
+        console.log(removingAlerts.length);
+    }
 
     setTimeout(function() {
         customAlertAddClass(divbox);
@@ -27,20 +37,19 @@ function createCustomAlert(alertSrc) {
     setTimeout(function() {
         customAlertDelete(divbox);
     }, 3000)
-
-    if (2 < document.querySelectorAll('.custom_alert').length) {
-        console.log('3개이상');
-        customAlertDelete(document.querySelectorAll('.custom_alert')[0]);
-    }
 }
 
 function customAlertAddClass(target) {
     target.classList.add('on');
 }
 
-function customAlertDelete(target) {
+function customAlertDelete(target, bool) {
     target.classList.add('removing');
     target.addEventListener('animationend', function () {
         target.remove();
     })
+    
+    if (true == bool) {
+        target.classList.add('over');
+    }
 }
